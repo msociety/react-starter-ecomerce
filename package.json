@@ -1,0 +1,50 @@
+{
+  "name": "react-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "node scripts/generateMockData && prettier --write \"./db.json\"",
+    "start": "concurrently \"npm:server:rest\" \"npm:server:graphql\" \"npm:dev\"",
+    "dev": "parcel ./src/index.html --port 8080 --open",
+    "build": "parcel build ./src/index.html",
+    "server:rest": "json-server --watch db.json && echo \"Running REST fake API\"",
+    "server:graphql": "graphql-faker && echo \"Running GraphQL fake API\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write --ignore-unknown"
+  },
+  "keywords": [],
+  "author": "Miguel Molina <miguelmolina.tk@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "faker": "^5.4.0",
+    "fs": "0.0.1-security",
+    "graphql-faker": "^2.0.0-rc.23",
+    "husky": "^5.0.9",
+    "json-schema-faker": "^0.5.0-rcv.33",
+    "json-server": "^0.16.3",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "2.2.1",
+    "stylelint-config-prettier": "^8.0.2"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*": "prettier --write --ignore-unknown",
+    "src/**/*.JS": "npm run lint"
+  }
+}

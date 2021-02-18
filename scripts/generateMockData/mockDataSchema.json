@@ -1,0 +1,89 @@
+{
+  "type": "object",
+  "properties": {
+    "clients": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "unique": true,
+            "faker": "random.uuid"
+          },
+          "firstName": {
+            "type": "string",
+            "faker": "name.firstName"
+          },
+          "lastName": {
+            "type": "string",
+            "faker": "name.lastName"
+          },
+          "email": {
+            "type": "string",
+            "faker": "internet.email"
+          },
+          "phone": {
+            "type": "string",
+            "faker": "phone.phoneNumber"
+          },
+          "registerDate": {
+            "type": "string",
+            "faker": "date.past"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "unique": true,
+                "faker": "random.uuid"
+              },
+              "street": {
+                "type": "string",
+                "faker": "address.streetAddress"
+              },
+              "zipCode": {
+                "type": "string",
+                "faker": "address.zipCode"
+              },
+              "city": {
+                "type": "string",
+                "faker": "address.city"
+              },
+              "country": {
+                "type": "string",
+                "faker": "address.country"
+              }
+            },
+            "required": ["id", "street", "city"]
+          },
+          "paymentMethods": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 2,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "unique": true,
+                  "faker": "random.uuid"
+                },
+                "iban": {
+                  "type": "string",
+                  "faker": "finance.iban"
+                }
+              },
+              "required": ["id", "iban"]
+            }
+          }
+        },
+        "required": ["id", "firstName", "email"]
+      }
+    }
+  },
+  "required": ["clients"]
+}
