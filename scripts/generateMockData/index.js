@@ -6,18 +6,18 @@
 
 // Helper tool for creating schema: https://json-schema-faker.js.org/
 
-var jsf = require("json-schema-faker")
-var mockDataSchema = require("./mockDataSchema.json")
-var fs = require("fs")
+var jsf = require("json-schema-faker");
+var mockDataSchema = require("./mockDataSchema.json");
+var fs = require("fs");
 
-jsf.extend("faker", () => require("faker"))
+jsf.extend("faker", () => require("faker"));
 
-var json = JSON.stringify(jsf.generate(mockDataSchema))
+var json = JSON.stringify(jsf.generate(mockDataSchema));
 
 fs.writeFile("./db.json", json, function (err) {
   if (err) {
-    return console.log(err)
+    return console.log(err);
   } else {
-    console.log("Mock data generated.")
+    console.log("Mock data generated.");
   }
-})
+});
