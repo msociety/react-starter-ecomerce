@@ -12,21 +12,15 @@
 # Developed with ❤️ by APIs.guru | https://github.com/APIs-guru/graphql-faker
 
 type Product {
-  id: ID!
+  id: ID
   type: String! @examples(values: ["vaccum", "scooter"])
-  price: String! @fake(type: price, options: { min: 150, max: 900, dec: 2, symbol: € })
-  name: String! @fake(type: productName, locale: es_ES)
-  product: String! @fake(type: product, locale: es_ES)
-  description: String @fake(type: productDescription, locale: es_ES)
+  # price: String! @fake(type: price, options: { min: 150, max: 900, dec: 2, symbol: "€" })
+  name: String! @fake(type: productName, locale: es)
+  product: String! @fake(type: product, locale: es)
+  # description: String @fake(type: productDescription, locale: es)
 }
 
-# type VaccumCeaner implements Product {
-#   ...
-#   powerSupply: 
-# }
-
 type Query {
-  # employee(id: ID): Employee
-  # company(id: ID): Company
   allProducts: [Product!] @listLength(min: 12, max: 25)
+  product(id: ID): Product
 }
