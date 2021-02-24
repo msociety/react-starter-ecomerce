@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "@reach/router";
 
 export default () => {
-  console.log("hi");
   return (
     <header>
       <Link to="/">
