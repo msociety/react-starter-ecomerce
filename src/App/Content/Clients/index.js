@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useFetch, { Provider } from "use-http";
 import PageContainer from "../components/PageContainer";
 import { API_REST_URL } from "../../../constants";
+import Client from "./Client";
 
 const Clients = () => {
   const { data, loading, error, get, response } = useFetch("/clients");
@@ -19,7 +20,7 @@ const Clients = () => {
         </p>
       )}
       {loading && <p>Loading...</p>}
-      {Array.isArray(data) && data.map(client => <div key={client.id}>{client.firstName}</div>)}
+      {Array.isArray(data) && data.map(client => <Client key={client.id} {...client} />)}
     </PageContainer>
   );
 };

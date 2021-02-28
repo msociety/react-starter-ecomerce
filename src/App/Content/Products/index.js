@@ -3,6 +3,7 @@ import { Provider, useQuery } from "use-http";
 import { API_GRAPHQL_URL } from "../../../constants";
 import PageContainer from "../components/PageContainer";
 import { getAllProducts } from "./queries";
+import Product from "./Product";
 
 const Products = () => {
   const { data, loading, error, query } = useQuery([getAllProducts]);
@@ -16,7 +17,7 @@ const Products = () => {
       <h2>Products</h2>
       {error && <p>Error!</p>}
       {loading && <p>Loading...</p>}
-      {data && data.allProducts.map(product => <div key={product.id}>{product.name}</div>)}
+      {data && data.allProducts.map(product => <Product key={product.id} {...product} />)}
     </PageContainer>
   );
 };
