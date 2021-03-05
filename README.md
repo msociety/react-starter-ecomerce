@@ -21,7 +21,8 @@ $ npm start
 ## Dependencies
 
 - **app**: react, @reach/router, use-http
-- **dev**: parcel, eslint
+- **bundler**: parcel
+- **dev**: eslint, prettier
 - **tests** (pending): jest, react-testing-library
 - **css**: postcss, emotion, normalize
 - **mocks**: graphql-faker, json-server
